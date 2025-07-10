@@ -29,7 +29,7 @@
       z-index: 10;
       user-select: none;
     }
-    .video-background, .audio-background {
+    .video-background {
       position: fixed;
       top: 0; left: 0;
       width: 100vw; height: 100vh;
@@ -120,7 +120,7 @@
       ></iframe>
   </div>
 
-  <!-- Musik als Audio, einfacher & besser kontrollierbar -->
+  <!-- Musik als Audio -->
   <audio id="bgAudio" loop></audio>
 
   <div class="overlay" id="siteContent">
@@ -145,13 +145,12 @@
     const bgAudio = document.getElementById('bgAudio');
 
     startBtn.addEventListener('click', () => {
-      // YouTube Video URL mit Autoplay und Loop, Ton an
+      // YouTube Video URL mit Autoplay, Loop und Ton
       const videoId = 'hm-MOdLU21M';
       videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&enablejsapi=1`;
 
-      // Musik als Audio-Element, hier als Beispiel YouTube Musik als direkte MP3 ersetzen
-      // Da kein direkter MP3-Link, hier Beispiel mit OGG/MP3 von free source:
-      bgAudio.src = 'https://cdn.pixabay.com/download/audio/2022/03/02/audio_5dfd0e11e5.mp3?filename=epic-cinematic-trailer-11254.mp3';
+      // Musik per MP3 (ersetze die URL mit deiner eigenen MP3-Datei)
+      bgAudio.src = 'https://example.com/deine-musik-datei.mp3'; // <-- HIER DEINE MP3-URL EINSETZEN
       bgAudio.volume = 0.5;
       bgAudio.play();
 
@@ -164,10 +163,3 @@
 
 </body>
 </html>
-<!DOCTYPE html>
-<html>
-<body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
-</body>
-</html
