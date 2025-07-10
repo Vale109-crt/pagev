@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>vale0368 ⚡</title>
+  <style>
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body, html {
+      height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      background: black;
+      color: white;
+      overflow: hidden;
+    }
+    .click-to-start {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: black;
+      color: #00ffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5em;
+      cursor: pointer;
+      z-index: 10;
+      user-select: none;
+    }
+    .video-background, .audio-background {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+      display: none;
+    }
+    .video-background iframe {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 177.77vh; /* 16:9 ratio */
+      height: 100vh;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      filter: brightness(0.4);
+    }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      backdrop-filter: blur(2px);
+      background: rgba(0,0,0,0.4);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 5;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+      color: #00ffff;
+      text-shadow: 0 0 10px #00ffff;
+    }
+    .widget img {
+      max-width: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px #00ffff;
+    }
+    .links {
+      margin-top: 1em;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    .links a {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 10px #0ff;
+      transition: all 0.3s ease;
+    }
+    .links a:hover {
+      background: #0ff;
+      transform: scale(1.1);
+    }
+    .links img {
+      width: 30px; height: 30px;
+    }
+    .credits {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      font-size: 0.8em;
+      color: rgba(255, 255, 255, 0.4);
+      font-family: monospace;
+      z-index: 5;
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="click-to-start" id="startBtn">Click me</div>
+
+  <div class="video-background" id="videoBg">
+    <iframe
+      id="videoIframe"
+      src=""
+      frameborder="0"
+      allow="autoplay; fullscreen"
+      allowfullscreen
+      ></iframe>
+  </div>
+
+  <!-- Musik als Audio, einfacher & besser kontrollierbar -->
+  <audio id="bgAudio" loop></audio>
+
+  <div class="overlay" id="siteContent">
+    <h1>vale0368 ⚡</h1>
+    <div class="widget">
+      <img src="https://discord.c99.nl/widget/theme-4/vale0368.png" alt="Discord Widget" />
+    </div>
+    <div class="links">
+      <a href="https://discord.gg/9UKHuqsaCZ" target="_blank" rel="noopener noreferrer" title="Discord Server">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord" />
+      </a>
+    </div>
+  </div>
+
+  <div class="credits">vale0368.com</div>
+
+  <script>
+    const startBtn = document.getElementById('startBtn');
+    const videoBg = document.getElementById('videoBg');
+    const videoIframe = document.getElementById('videoIframe');
+    const siteContent = document.getElementById('siteContent');
+    const bgAudio = document.getElementById('bgAudio');
+
+    startBtn.addEventListener('click', () => {
+      // YouTube Video URL mit Autoplay und Loop, Ton an
+      const videoId = 'hm-MOdLU21M';
+      videoIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&loop=1&playlist=${videoId}&controls=0&modestbranding=1&rel=0&enablejsapi=1`;
+
+      // Musik als Audio-Element, hier als Beispiel YouTube Musik als direkte MP3 ersetzen
+      // Da kein direkter MP3-Link, hier Beispiel mit OGG/MP3 von free source:
+      bgAudio.src = 'https://cdn.pixabay.com/download/audio/2022/03/02/audio_5dfd0e11e5.mp3?filename=epic-cinematic-trailer-11254.mp3';
+      bgAudio.volume = 0.5;
+      bgAudio.play();
+
+      // Anzeige der Elemente
+      videoBg.style.display = 'block';
+      siteContent.style.display = 'flex';
+      startBtn.style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
